@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Title of the page -->
+    <title> Update Product Types</title>
+</head>
+
+<body>
+
+<!-- Container for navigation bar -->
+<div id="navbarContainer"></div>
+
+<!-- JavaScript to fetch and insert the navigation bar -->
+<script>
+    fetch(`../static/html/navBar.html`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbarContainer').innerHTML = data;
+        });
+</script>
+
+<!-- Main content area -->
+<div class="bgimg">
+    <div class="position">
+        <!-- Heading -->
+        <h1>Update info</h1>
+
+        <!-- Form for updating category information -->
+        <form action="{{ url_for('perform_update_prod_type', productType_id=product_data[0]) }}" method="post">
+            <div class="feedback-container">
+                <!-- Input fields for category information -->
+                <label for="ProductPrice">Product Price:</label>
+                <label>
+                    <input type="text" class="feedback-input" name="ProductPrice" value="{{ product_data[0] }}" required>
+                </label><br>
+
+                <label for="Quantity">Quantity:</label>
+                <label>
+                    <input type="text" class="feedback-input" name="Quantity" value="{{ product_data[1] }}" required>
+                </label><br>
+
+                <label for="isDiscontinued">Is Discontinued:</label>
+                <!-- Checkbox for marking if the product is discontinued -->
+                <label>
+                    <input type="checkbox" class="feedback-input" name="isDiscontinued" {% if product_data[2] %}checked{% endif %}>
+                </label><br>
+
+                <!-- Button to submit the form -->
+                <div class="button-container">
+                    <button type="submit" class="feedback-button">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

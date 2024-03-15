@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Page title -->
+    <title>Materials Information</title>
+</head>
+
+<body>
+    <!-- Navigation bar container -->
+    <div id="navbarContainer"></div>
+
+    <!-- JavaScript to load the navigation bar -->
+    <script>
+        // Fetch and insert the navigation bar HTML content
+        fetch(`../static/html/navBar.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbarContainer').innerHTML = data;
+            });
+    </script>
+
+    <!-- Main content area -->
+    <div class="bgimg">
+        <div class="position">
+
+            <!-- Displaying Data -->
+            <table>
+                <thead>
+                    <tr>
+                        <!-- Table headers -->
+                        <th>Material Name</th>
+                        <th>Supplier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through data rows -->
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+
+                        <td>
+                            <!-- Button container -->
+                            <div class="button-container3">
+                                <!-- Link to show supplier details -->
+                                <a href="{{ url_for('info_supplier', productType_id=productType_id, material_id=row[1]) }}" class="button">Show Supplier</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

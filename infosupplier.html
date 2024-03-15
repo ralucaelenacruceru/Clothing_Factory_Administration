@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Title of the page -->
+    <title>Supplier Information</title>
+</head>
+
+<body>
+    <!-- Container for navigation bar -->
+    <div id="navbarContainer"></div>
+
+    <!-- JavaScript to fetch and insert the navigation bar -->
+    <script>
+        fetch(`../static/html/navBar.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbarContainer').innerHTML = data;
+            });
+    </script>
+
+    <!-- Main content area -->
+    <div class="bgimg">
+        <div class="position">
+
+            <!-- Heading for the table -->
+            <h1>Supplier Information</h1>
+
+            <!-- Table to display supplier information -->
+            <table>
+                <thead>
+                    <!-- Table header -->
+                    <tr>
+                        <th>SUPPLIER NAME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through data rows -->
+                    {% for row in datasup %}
+                        <tr>
+                            <!-- Table data -->
+                            <td>{{ row[0] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>
+</html>

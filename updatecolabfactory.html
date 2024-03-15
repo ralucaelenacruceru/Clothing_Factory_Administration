@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Title of the page -->
+    <title>Update Collaborating Factories</title>
+</head>
+
+<body>
+
+<!-- Container for navigation bar -->
+<div id="navbarContainer"></div>
+
+<!-- JavaScript to fetch and insert the navigation bar -->
+<script>
+    fetch(`../static/html/navBar.html`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbarContainer').innerHTML = data;
+        });
+</script>
+
+<!-- Main content area -->
+<div class="bgimg">
+    <div class="position">
+        <!-- Heading -->
+        <h1>Update info</h1>
+
+        <!-- Form for updating factory information -->
+        <form action="{{ url_for('perform_update_factory', factory_id=factory_data[6]) }}" method="post">
+            <div class="feedback-container">
+                <!-- Input fields for factory information -->
+                <label for="NameFactory">NAME</label>
+                <label>
+                    <input type="text" class="feedback-input" value="{{ factory_data[0] }}" name="NameFactory" required>
+                </label>
+
+                <label for="ContactName">CONTACT NAME</label>
+                <label>
+                    <input type="text" class="feedback-input" value="{{ factory_data[1] }}" name="ContactName" required>
+                </label>
+
+                <label for="City">CITY</label>
+                <label>
+                    <input type="text" class="feedback-input" value="{{ factory_data[2] }}" name="City" required>
+                </label>
+
+                <label for="Country">COUNTRY</label>
+                <label>
+                    <input type="text" class="feedback-input" value="{{ factory_data[3] }}" name="Country" required>
+                </label>
+
+                <label for="Address">ADDRESS</label>
+                <label>
+                    <input type="text" class="feedback-input" value="{{ factory_data[4] }}" name="Adress" required>
+                </label>
+
+                <label for="PostalCode">POSTAL CODE</label>
+                <label>
+                    <input type="text" class="feedback-input" value="{{ factory_data[5] }}" name="PostalCode" required>
+                </label>
+            </div>
+
+            <!-- Button to submit the form -->
+            <div class="button-container">
+                <button type="submit" class="feedback-button">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

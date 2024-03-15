@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head section with meta tags, links to stylesheets, and page title -->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Link to the welcome page stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+    <!-- Link to the navigation bar stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <!-- Link to Google Fonts for custom font -->
+    <link href='https://fonts.googleapis.com/css?family=Cedarville Cursive' rel='stylesheet'>
+    <!-- Title of the page -->
+    <title>Welcome Page</title>
+</head>
+
+<body>
+
+<!-- Container for the navigation bar -->
+<div id="navbarContainer"></div>
+
+<!-- JavaScript to fetch and insert the navigation bar -->
+<script>
+    fetch('../static/html/navBar.html')
+        .then(response => response.text())
+        .then(data => {
+            // Insert the navigation bar HTML content into the container
+            document.getElementById('navbarContainer').innerHTML = data;
+        });
+</script>
+
+<!-- Main content area -->
+<div class="bgimg">
+    <!-- Middle section for main content -->
+    <div class="middle">
+        <!-- Heading -->
+        <h1>Welcome!</h1>
+    </div>
+
+    <!-- Bottom-left section for additional information -->
+    <div class="bottomleft">
+        <!-- Subtitle -->
+        <p>Clothes Factory</p>
+    </div>
+</div>
+
+</body>
+
+</html>

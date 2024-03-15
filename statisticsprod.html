@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Title of the page -->
+    <title>Product Statistics</title>
+</head>
+
+<body>
+    <!-- Container for navigation bar -->
+    <div id="navbarContainer"></div>
+
+    <!-- JavaScript to fetch and insert the navigation bar -->
+    <script>
+        fetch(`../static/html/navBar.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbarContainer').innerHTML = data;
+            });
+    </script>
+
+    <!-- Main content area -->
+    <div class="bgimg">
+        <div class="position">
+
+            <!-- Heading for the table -->
+            <h1>Product Statistics</h1>
+
+            <!-- Table to display product statistics -->
+            <table>
+                <thead>
+                    <!-- Table header -->
+                    <tr>
+                        <th>Product Type</th>
+                        <th>Product Price/item</th>
+                        <th>Material Costs/unity</th>
+                        <th>Profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through product statistics data rows -->
+                    {% for row in sb3_data %}
+                        <tr>
+                            <!-- Display product statistics data -->
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>
+                                <!-- Button to navigate to another page for additional information -->
+                                <div class="button-container3">
+                                    <a href="{{ url_for('prod_stats2', productType_id=row[0]) }}" class="button">Most Items</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</body>
+</html>

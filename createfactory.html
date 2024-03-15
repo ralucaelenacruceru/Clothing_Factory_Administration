@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Page title -->
+    <title>Add Factories</title>
+</head>
+
+<body>
+
+    <!-- Navigation bar container -->
+    <div id="navbarContainer"></div>
+
+    <!-- JavaScript to load the navigation bar -->
+    <script>
+        // Fetch and insert the navigation bar HTML content
+        fetch(`../static/html/navBar.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbarContainer').innerHTML = data;
+            });
+    </script>
+
+    <!-- Main content area -->
+    <div class="bgimg">
+        <div class="position">
+            <!-- Heading -->
+            <h1>Add a new collaboration!</h1>
+
+            <!-- Form to add a new factory -->
+            <form class="feedback-form" action="{{ url_for('create_factory') }}" method="post">
+                <div class="feedback-container">
+                    <!-- Input fields -->
+                    <label for="NameFactory">NAME</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="NameFactory" required>
+                    </label>
+
+                    <label for="ContactName">CONTACT NAME</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="ContactName" required>
+                    </label>
+
+                    <label for="City">CITY</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="City" required>
+                    </label>
+
+                    <label for="Country">COUNTRY</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="Country" required>
+                    </label>
+
+                    <label for="Address">ADDRESS</label>
+
+                    <label>
+                        <input type="text" class="feedback-input" name="Address" required>
+                    </label> <!-- Note: Typo in "Address" -->
+
+                    <label for="PostalCode">POSTAL CODE</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="PostalCode" required>
+                    </label>
+                </div>
+
+                <!-- Button to submit the form -->
+                <div class="button-container">
+                    <button type="submit" class="feedback-button">Add Factory</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

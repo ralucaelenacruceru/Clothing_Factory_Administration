@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Page title -->
+    <title>Add Product Types</title>
+</head>
+
+<body>
+
+    <!-- Navigation bar container -->
+    <div id="navbarContainer"></div>
+
+    <!-- JavaScript to load the navigation bar -->
+    <script>
+        // Fetch and insert the navigation bar HTML content
+        fetch(`../static/html/navBar.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbarContainer').innerHTML = data;
+            });
+    </script>
+
+    <!-- Main content area -->
+    <div class="bgimg">
+        <div class="position">
+
+            <!-- Heading -->
+            <h1>Add a new product!</h1>
+
+            <!-- Form to add a new product -->
+            <form class="feedback-form" action="{{ url_for('create_prod_type') }}" method="post">
+                <!-- Hidden field for factory ID -->
+                <input type="hidden" name="factory_id" value="{{ factory_id }}">
+                <div class="feedback-container">
+
+                    <!-- Dropdown for selecting category -->
+                    <label for="CategoryName">CATEGORY</label>
+                    <select id="CategoryName" name="CategoryName" class="feedback-input" required>
+                        {% for option in categories %}
+                            <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <!-- Input fields for product details -->
+                    <label for="Price">PRICE</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="Price" required>
+                    </label>
+
+                    <label for="Color">COLOR</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="Color" required>
+                    </label>
+
+                    <label for="Quantity">QUANTITY</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="Quantity" required>
+                    </label>
+
+                    <label for="NameProductType">PRODUCT TYPE</label>
+                    <label>
+                        <input type="text" class="feedback-input" name="NameProductType" required>
+                    </label>
+                </div>
+
+                <!-- Button to submit the form -->
+                <div class="button-container">
+                    <button type="submit" class="feedback-button">Add Product</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

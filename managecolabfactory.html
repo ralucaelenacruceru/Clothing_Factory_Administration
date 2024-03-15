@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+
+    <!-- Title of the page -->
+    <title>Managing Collaborating Factories</title>
+</head>
+
+<body>
+    <!-- Container for navigation bar -->
+    <div id="navbarContainer"></div>
+
+    <!-- JavaScript to fetch and insert the navigation bar -->
+    <script>
+        fetch(`../static/html/navBar.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbarContainer').innerHTML = data;
+            });
+    </script>
+
+    <!-- Main content area -->
+    <div class="bgimg">
+        <div class="position">
+
+            <!-- Heading for the table -->
+            <h1>Collaborating Factories</h1>
+
+            <!-- Table to display factory information -->
+            <table>
+                <thead>
+                    <!-- Table header -->
+                    <tr>
+                        <th>NAME</th>
+                        <th>CONTACT NAME</th>
+                        <th>CITY</th>
+                        <th>COUNTRY</th>
+                        <th>ADDRESS</th>
+                        <th>POSTAL CODE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through factory data rows -->
+                    {% for row in data %}
+                        <tr>
+                            <!-- Display factory data -->
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>
+                                <!-- Container for action buttons -->
+                                <div class="button-container3">
+                                    <!-- Button to delete factory -->
+                                    <a href="{{ url_for('delete_factory', factory_id=row[6]) }}" onclick="return confirm('Are you sure you want to delete this factory?')">Delete</a>
+                                    <!-- Button to update factory -->
+                                    <a href="{{ url_for('perform_update_factory', factory_id=row[6]) }}">Update</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Button to add a new factory -->
+            <div class="button-container2">
+                <button><a href="/createFacPage" class="button">Add</a></button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
