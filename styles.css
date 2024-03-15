@@ -1,0 +1,153 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+@import url('https://fonts.googleapis.com/css?family=Cedarville+Cursive');
+
+/* Reset default margin and set background color */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/* Background image styling */
+.bgimg {
+    background-image: url('../images/sewing-machine-working.jpg'); /* Relative to the CSS file */
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: #eae5e5;
+    font-family: 'Cedarville Cursive', serif;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+/* Container positioning and styling */
+.position {
+    position: absolute;
+    right: 5%;
+    left: 5%;
+    bottom: 5%;
+    top: 10%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    background-color: #383535;
+    overflow: auto;
+}
+
+.position h1 {
+    text-align: center; /* Center the text */
+}
+
+/* Table styling */
+table {
+    width: 70%;
+    border-collapse: collapse;
+    font-family: 'Work Sans', sans-serif;
+    background-color: #ddf6f3;
+    margin: 0 auto 50px;
+}
+
+th, td {
+    border: 10px solid #383535;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    color: #2a1d1d;
+    box-sizing: border-box;
+}
+
+th {
+    background-color: #ecc2c2;
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Button container styling */
+.button-container {
+    text-align: center;
+}
+
+.button-container2 {
+    text-align: right;
+    padding-right: 40px;
+}
+
+/* Button styling */
+.button-container button,
+.button-container2 button {
+    background-color: #ecc2c2;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cedarville Cursive', serif;
+    font-size: medium;
+    text-shadow: #2a1d1d;
+    text-decoration: none; /* Remove underline */
+    border-radius: 20px; /* Roundness of the button */
+}
+
+.button-container button:hover,
+.button-container2 button:hover {
+    background-color: #d09797;
+}
+
+.button-container a,
+.button-container2 a {
+    background-color: #ecc2c2;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cedarville Cursive', serif;
+    font-size: medium;
+    text-shadow: #2a1d1d;
+    text-decoration: none; /* Remove underline */
+}
+
+.button-container a:hover,
+.button-container2 a:hover {
+    background-color: #d09797;
+}
+
+.button-container3 a {
+    background-color: #ecc2c2;
+    color: white;
+    padding: 1px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    font-size: medium;
+    text-shadow: #2a1d1d;
+    text-decoration: none; /* Remove underline */
+    border-radius: 20px; /* Roundness of the button */
+}
+
+/* Form styling */
+form {
+    max-width: 420px;
+    margin: 50px auto;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.feedback-input {
+    color: black;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 22px;
+    background-color: white;
+    border: 2px solid #CC6666;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+.feedback-input:focus {
+    border: 2px solid #CC4949;
+}

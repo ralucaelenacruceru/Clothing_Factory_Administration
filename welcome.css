@@ -1,0 +1,41 @@
+/* Set default styles for body and html */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+/* Styling for background image */
+.bgimg {
+  position: relative;
+  background-image: url('../images/sewing-machine-working.jpg'); /* relative to the css file otherwise error */
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  color: #2a1d1d;
+  font-family: 'Cedarville Cursive';
+}
+
+/* Styling for text at the bottom left corner */
+.bottomleft {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  color: wheat;
+  font-size: 30px;
+}
+
+/* Styling for text in the middle */
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 60px;
+}
+
+/* Styling for horizontal rule */
+hr {
+  width: 50%;
+  margin: 0 auto 20px;
+}
